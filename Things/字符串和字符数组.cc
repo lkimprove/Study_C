@@ -3,18 +3,16 @@
 #include <string.h>
 
 int main(){
-	/*×Ö·ûÊı×é¸³³õÖµ*/
+	//å­—ç¬¦æ•°ç»„èµ‹åˆå€¼
 	char cArr[] = { 'I', 'L', 'O', 'V', 'E', 'C' };
-	char cArr2[] = { 'I', 'L', 'O', 'V', 'E', 'C' };
-	/*×Ö·û´®¸³³õÖµ*/
+	//å­—ç¬¦ä¸²èµ‹åˆå€¼
 	char sArr[] = "ILOVEC";
 
-	printf("%d\n", sizeof(cArr) / sizeof(cArr[0]));
-	printf("%d\n", sizeof(sArr));
+	printf("å­—ç¬¦æ•°ç»„ï¼š%d\n", sizeof(cArr) / sizeof(cArr[0]));    //6 
+	printf("å­—ç¬¦ä¸²ï¼š%d\n", sizeof(sArr));                        //7 (ç®—ä¸Šäº† '\0')
 
-	printf("%d\n", strlen(cArr));  // strlen ĞèÒªÊ¶±ğ³ö¡®\0¡¯£¬¶ø×Ö·ûÊı×éÃ»ÓĞ¡®\0¡¯,ÔòÊä³öËæ»úÖµ
-	printf("%d\n", strlen(cArr2));
-	printf("%d\n", strlen(sArr));
+	printf("å­—ç¬¦æ•°ç»„ï¼š%d\n", strlen(cArr));  // strlen éœ€è¦è¯†åˆ«å‡ºâ€˜\0â€™ï¼Œè€Œå­—ç¬¦æ•°ç»„æ²¡æœ‰â€˜\0â€™,åˆ™è¾“å‡ºéšæœºå€¼
+	printf("å­—ç¬¦ä¸²ï¼š%d\n", strlen(sArr));    // 6 strlen è¯†åˆ« '\0'å‰çš„å­—ç¬¦ä¸ªæ•°ï¼Œä¸åŒ…æ‹¬ '\0'
 
 	system("pause");
 	return 0;
