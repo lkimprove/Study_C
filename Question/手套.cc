@@ -7,7 +7,7 @@ using namespace std;
 int FindMinimum(int n, vector<int> left, vector<int> right) {
 	int ret = 0;
 	int left_min = INT_MAX;
-	int	right_min = INT_MAX;
+	int right_min = INT_MAX;
 	int left_sum = 0;
 	int right_sum = 0;
 	for (int i = 0; i < n; i++){
