@@ -2,8 +2,9 @@
 编译时确定类型：运行时O(1)
 	模板特化：
 		1. 定义两个类型： TruetType, FalseType ---> 分流
-		2. TypeTraits:  通用的类模板， IsPODType --> FalseType
-					          内置类型特化， IsPODType --> TrueType
+		2. TypeTraits:  
+			基础类模板， IsPODType --> FalseType
+			内置类型的特化， IsPODType --> TrueType
 		3. 实例化： 内置类型-->特化
 		           自定义类型--> 基础类模板实例化
 	
