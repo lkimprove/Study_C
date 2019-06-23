@@ -174,7 +174,7 @@ int Date::operator-(const Date& d) const{
 	return days * flag;
 }
 
-
+//输出
 ostream& operator<<(ostream& _cout, const Date& d){
 	_cout << d._year << "-";
 	_cout << d._month << "-";
@@ -183,7 +183,7 @@ ostream& operator<<(ostream& _cout, const Date& d){
 
 	return _cout;
 }
-
+//输入
 istream& operator>>(istream& _cin, Date& d){
 	_cin >> d._year;
 	_cin >> d._month;
