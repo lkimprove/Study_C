@@ -16,7 +16,9 @@ int main(){
         for(int i = 0; i <sum; i++){
             cin >> table[i];
         }
+        
         //洗牌
+        //1.寻找规律法
         while(k--){
             vector<int> cur(table.begin(), table.end());
             for(int i = 0; i < n; i++){
@@ -26,6 +28,19 @@ int main(){
                 table[2 * i + 1] = cur[i + n]; 
             }
         }
+        //2.暴力破解法
+        while(k--){
+            vector<int> cur(table.begin(), table.end());
+            int j = 2 * n - 1;
+            for(int i = n - 1; i >= 0; i--){
+                //右手n - (2n - 1)
+                //(0 - (n - 1)) + n
+                table[j--] = cur[i + n];
+                //左手0 - (n-1)
+                table[j--] = cur[i];
+            }
+        }
+        
         //输出结果
         for(int i = 0; i < sum - 1; i++){
             cout << table[i] << " ";
