@@ -1,20 +1,20 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
 int main(){
     //创建一个斐波那契数组
-    //初始化这个数组，超过四位数，只保留后四位
-    int Fib[10001];
+    vector<int> Fib(10001, 0);
     Fib[0] = 1;
     Fib[1] = 1;
-    for(int i = 2; i < 10001; i++){
-        Fib[i] = (Fib[i -1] % 10000 + Fib[i - 2] % 10000) %10000;
+    for(int i = 2; i < Fib.size(); i++){
+        Fib[i] = (Fib[i - 1] % 10000 + Fib[i - 2] % 10000) % 10000;
     }
-    //数据组数
+    //输入数据组数
     int n;
     while(cin >> n){
         while(n--){
-            //输入
+            //输入数据
             int x;
             cin >> x;
             //输出
