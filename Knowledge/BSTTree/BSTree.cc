@@ -4,7 +4,7 @@ using namespace std;
 //二叉搜索树节点
 template <class T>
 struct BSTNode{
-	T _data;				//节点值
+	T _data;			//节点值
 	BSTNode<T>* _left;		//左子树
 	BSTNode<T>* _right;		//右子树
 
