@@ -124,7 +124,7 @@ public:
 	}
 
 	//打印
-	void Input(){
+	void Print(){
 		for (size_t i = 0; i < _ht.size(); i++){
 			//判断该位置是否存在元素
 			if (_ht[i]._state == EXIST){
@@ -154,9 +154,9 @@ void Test(){
 	ht.Insert(make_pair(8, 8));
 	ht.Insert(make_pair(110, 110));
 	ht.Insert(make_pair(23, 23));
-	ht.Input();
+	ht.Print();
 	ht.Erase(110);
-	ht.Input();
+	ht.Print();
 
 	int cur = 110;
 	HashTable<int, int>::Node* pos = ht.Find(cur);
