@@ -112,8 +112,10 @@ public:
 		pNode pos = Find(key);
 		//判断该元素是否存在
 		if (pos){
+			//删除该元素
 			pos->_state = DELETE;
 			_size--;
+			
 			return true;
 		}
 
