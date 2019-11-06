@@ -1,9 +1,10 @@
+
+//暴力破解
 #include <iostream>
 #include <string>
 #include <algorithm>
 using namespace std;
 
-//暴力破解
 int main(){
     //输入
     string s1;
