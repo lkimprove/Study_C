@@ -20,6 +20,7 @@ int main(){
     while(cin >> s){
         //逆置
         Reverse(s);
+        
         //输出
         cout << s << endl;
     }
