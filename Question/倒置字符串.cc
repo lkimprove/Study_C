@@ -11,7 +11,7 @@ int main(){
         
         //逆置每一个单词
         auto start = s.begin();
-        while(start != s.end()){
+        while(1){
             auto end = start;
             while(end != s.end() && *end != ' '){
                 end++;
