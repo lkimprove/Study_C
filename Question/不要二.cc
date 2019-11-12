@@ -52,3 +52,38 @@ int main(){
     
     return 0;
 }
+
+//优化
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main(){
+    int W, H;
+    while(cin >> W >> H){
+        //将每个位置都放上蛋糕
+        vector<vector<int>> box(H, vector<int>(W, 1));
+        
+        int ret = 0;
+        for(int i = 0; i < H; i++){
+            for(int j = 0; j < W; j++){
+                if(box[i][j] == 1){
+                    ret++;
+                    
+                    //将不符合题意的蛋糕去掉
+                    if(i + 2 < H){
+                        box[i + 2][j] = 0;
+                    }
+                    if(j + 2 < W){
+                        box[i][j + 2] = 0;
+                    }
+                }
+            }
+        }
+        
+        cout << ret << endl;
+    }
+    
+    return 0;
+}
