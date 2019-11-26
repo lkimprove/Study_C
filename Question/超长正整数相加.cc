@@ -68,3 +68,62 @@ int main(){
     
     return 0;
 }
+
+//修建版
+#include <iostream>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    string s1;
+    while(getline(cin, s1)){
+        string s2;
+        getline(cin, s2);
+        
+        string ret;
+        //从最低位开始相加
+        int i = s1.size() - 1;
+        int j = s2.size() - 1;
+        int sign = 0;
+        
+        while(i >= 0 || j >= 0){
+            //遍历s1
+            if(i >= 0){
+                sign += (s1[i] - '0');
+            }
+            //遍历s2
+            if(j >= 0){
+                sign += (s2[j] - '0');
+            }
+            
+            //获取本位结果
+            ret += (sign % 10 + '0');
+            //获取进位（0或1）
+            sign /= 10;
+            
+            i--;
+            j--;
+        }
+        
+        //若两个字符串均遍历完后仍存在进位
+        if(sign){
+            ret += '1';
+        }
+        
+        //逆置
+        reverse(ret.begin(), ret.end());
+        
+        cout << ret << endl;
+    }
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
