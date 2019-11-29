@@ -3,11 +3,14 @@ using namespace std;
 
 //辗转相除法计算最大公约数
 
-int gcd(int x, int y){
-	if (!y){
-		return x;
-	}
-	return gcd(y, x % y);
+int gcb(int n, int m){
+    while(n % m){
+        int cur = m;
+        m = n % m;
+        n = cur;
+    }
+    
+    return m;
 }
 
 int main(){
