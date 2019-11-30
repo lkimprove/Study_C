@@ -9,65 +9,57 @@ int main(){
         string s2;
         getline(cin, s2);
         
-        //逆置
+        //使第一个字符串始终为长的字符串
+        if(s1.size() < s2.size()){
+            swap(s1, s2);
+        }
         reverse(s1.begin(), s1.end());
         reverse(s2.begin(), s2.end());
         
-        //确定长的数字和短的数字
-        string ret, str;
-        int size = 0;
-        if(s1.size() > s2.size()){
-            ret = s1;
-            size = s2.size();
-            str = s2;
-        }
-        else{
-            ret = s2;
-            size = s1.size();
-            str = s1;
-        }
-        
+        //进位标志
         int sign = 0;
-        for(int i = 0; i < size; i++){
-            int cur = (ret[i] - '0') + (str[i] - '0') + sign;
+        //遍历每一位
+        for(int i = 0; i < s2.size(); i++){
+            int cur = (s1[i] - '0') + (s2[i] - '0') + sign;
             if(cur >= 10){
-                ret[i] = (cur % 10) + '0';
+                s1[i] = (cur % 10 + '0');
                 sign = 1;
             }
             else{
-                ret[i] = (cur + '0');
+                s1[i] = (cur + '0');
                 sign = 0;
             }
         }
         
-        //若一长一短数字，遍历完短的字符串后仍然存在进位
+        //若遍历完s2仍存在进位
         if(sign){
-            for(int i = size; i < ret.size(); i++){
-                int cur = (ret[i] - '0') + sign;
+            for(int i = s2.size(); i < s1.size(); i++){
+                int cur = (s1[i] - '0') + sign;
                 if(cur >= 10){
-                    ret[i] = (cur % 10) + '0';
+                    s1[i] = (cur % 10 + '0');
                     sign = 1;
                 }
                 else{
-                    ret[i] = (cur + '0');
+                    s1[i] = (cur + '0');
                     sign = 0;
                     break;
                 }
             }
         }
         
-        //若遍历完长的字符串后仍然存在进位
+        //遍历完s1仍存在进位
         if(sign){
-            ret += '1';
+            s1 += '1';
         }
         
-        reverse(ret.begin(), ret.end());
+        reverse(s1.begin(), s1.end());
         
-        cout << ret << endl;
+        cout << s1 << endl;
     }
     
     return 0;
 }
+
 
 //修建版
 #include <iostream>
