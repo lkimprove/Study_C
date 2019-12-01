@@ -16,6 +16,7 @@ int main(){
             words[str[i] - 'a'][0]++;
             words[str[i] - 'a'][1] = i; 
         }
+
         //标记第一次出现一次字符的位置
         int sign = str.size();
         //遍历组字母数组
@@ -24,6 +25,7 @@ int main(){
                 sign = words[i][1];
             }
         }
+
         //输出
         if(sign == str.size()){
             cout << -1 << endl;
@@ -34,3 +36,38 @@ int main(){
     }
     return 0;
 }
+
+
+//修改版
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main(){
+    string str;
+    while(getline(cin, str)){
+        vector<int> hashTable(26, 0);
+        
+        for(auto it : str){
+            hashTable[it - 'a']++;
+        }
+        
+        int ret = str.size();
+        for(int i = 0; i < str.size(); i++){
+            if(hashTable[str[i] - 'a'] == 1){
+                ret = i;
+                cout << str[i] << endl;
+                break;
+            }
+        }
+        
+        if(ret == str.size()){
+            cout << -1 << endl;
+        }
+    }
+    
+    return 0;
+}
+
+
