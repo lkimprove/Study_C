@@ -22,3 +22,27 @@ int main(){
     
     return 0;
 }
+
+// write your code here cpp
+#include <iostream>
+using namespace std;
+
+int main(){
+    int n, m;
+    while(cin >> n >> m){
+        long long first = 1, second = 1;
+        long long ret = 0;
+        for(int i = 1; i <= m; i++){
+            if(i >= n){
+                ret += first;
+            }
+            long long cur = first + second;
+            first = second;
+            second = cur;
+        }
+        
+        cout << ret << endl;
+    }
+    
+    return 0;
+}
