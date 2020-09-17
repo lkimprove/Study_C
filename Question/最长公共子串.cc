@@ -54,3 +54,52 @@ int main(){
 	}
 	return 0;
 }
+
+
+
+
+//dp思想
+class Solution {
+public:
+    /**
+     * longest common substring
+     * @param str1 string字符串 the string
+     * @param str2 string字符串 the string
+     * @return string字符串
+     */
+    string LCS(string str1, string str2) {
+        // write code here
+        int s1 = str1.size(), s2 = str2.size();
+        int maxlen = 0, sign = 0;
+        
+        //dp[i][j]:
+        //    1.dp[i - 1] + dp[j - 1]; str1[i] == str2[j]
+        //    2.0;    str1[i] != str2[j]
+        vector<vector<int>> dp(s1 + 1, vector<int>(s2 + 1, 0));
+        for(int i = 1; i <= s1; i++){
+            for(int j = 1; j <= s2; j++){
+                if(str1[i - 1] == str2[j - 1]){
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    
+                    if(maxlen < dp[i][j]){
+                        maxlen = dp[i][j];
+                        sign = i - maxlen;
+                    }
+                }
+                else{
+                    dp[i][j] = 0;
+                }
+            }
+        }
+        
+        if(maxlen == 0){
+            return "-1";
+        }
+        string ret;
+        for(int i = 0; i < maxlen; i++){
+            ret.push_back(str1[sign++]);
+        }
+        return ret;
+        
+    }
+};
