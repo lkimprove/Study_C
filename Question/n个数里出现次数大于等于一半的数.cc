@@ -40,24 +40,6 @@ int main(){
     
     return 0;
 }
-#include <iostream>
-#include <algorithm>
-#include <vector>
-using namespace std;
-
-int main(){
-    vector<int> num;
-    int n;
-    while(cin >> n){
-        num.push_back(n);
-    }
-    
-    sort(num.begin(), num.end());
-    
-    cout << num[num.size() / 2 - 1] << endl;
-    
-    return 0;
-}
 
 
 //修改版2.0
