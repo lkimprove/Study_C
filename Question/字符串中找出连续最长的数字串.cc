@@ -29,3 +29,40 @@ int main(){
     
     return 0;
 }
+
+
+//动态规划
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+
+int main(){
+    string str;
+    while(getline(cin, str)){
+        int flag = 0, size = 0;
+        
+        vector<int> dp(str.size() + 1, 0);
+        for(int i = 1; i <= str.size(); i++){
+            if(str[i - 1] >= '0' && str[i - 1] <= '9'){
+                dp[i] = dp[i - 1] + 1;
+                
+                if(dp[i] > size){
+                    size = dp[i];
+                    flag = i - size;
+                }
+            }
+        }
+        
+        string ret;
+        for(int i = 0; i < size; i++){
+            ret.push_back(str[flag++]);
+        }
+        
+        cout << ret << endl;
+    }
+    
+    return 0;
+}
+
