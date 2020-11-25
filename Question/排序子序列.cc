@@ -33,3 +33,50 @@ int main(){
     
     return 0;
 }
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+
+int main(){
+    int n;
+    while(cin >> n){
+        vector<int> array(n, 0);
+        for(int i = 0; i < n; i++){
+            cin >> array[i];
+        }
+        
+        //flag: 1代表升序，2代表降序，到转折点时为0
+        int flag = 0, ret = 1;
+        for(int i = 0; i < n - 1; i++){
+            if(array[i] == array[i + 1]){
+                continue;
+            }
+            else if(array[i] < array[i + 1]){
+                if(flag == 2){
+                    ret++;
+                    flag = 0;
+                }
+                else{
+                    flag = 1;
+                }
+            }
+            else if(array[i] > array[i + 1]){
+                if(flag == 1){
+                    ret++;
+                    flag = 0;
+                }
+                else{
+                    flag = 2;
+                }
+            }
+        }
+        
+        cout << ret << endl;
+        
+    }
+    
+    return 0;
+}
