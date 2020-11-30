@@ -53,3 +53,44 @@ public:
         return (sign * ret);
     }
 };
+
+
+class Solution {
+public:
+    int strToInt(string str) {
+        size_t pos = 0;
+        while(pos < str.size() && str[pos] == ' '){
+            pos++;
+        }
+
+        int flag = 1;
+        if(str[pos] == '-'){
+            flag = -1;
+            pos++;
+        }
+        else if(str[pos] == '+'){
+            pos++;
+        }
+
+        long long ret = 0;
+        for(size_t i = pos; i < str.size(); i++){
+            if(str[i] >= '0' && str[i] <= '9'){
+                ret = (ret * 10 + str[i] - '0');
+                
+                if(ret > INT_MAX){
+                    if(flag == -1){
+                        return INT_MIN;
+                    }
+                    else if(flag == 1){
+                        return INT_MAX;
+                    }
+                }
+            }
+            else{
+                break;
+            }
+        }
+
+        return (ret * flag);
+    }
+};
