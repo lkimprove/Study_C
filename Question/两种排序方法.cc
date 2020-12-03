@@ -64,3 +64,52 @@ int main(){
     
     return 0;
 }
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n;
+    while(cin >> n){
+        vector<string> vs(n);
+        for(int i = 0; i < n; i++){
+            cin >> vs[i];
+        }
+        
+        bool lexicographically = true;
+        for(int i = 0; i < n - 1; i++){
+            if(vs[i] > vs[i + 1]){
+                lexicographically = false;
+            }
+        }
+        
+        bool lengths = true;
+        for(int i = 0; i < n - 1; i++){
+            if(vs[i].size() > vs[i + 1].size()){
+                lengths = false;
+            }
+        }
+        
+        if(lexicographically){
+            if(lengths){
+                cout << "both" << endl;
+            }
+            else{
+                cout << "lexicographically" << endl;
+            }
+        }
+        else{
+            if(lengths){
+                cout << "lengths" << endl;
+            }
+            else{
+                cout << "none" << endl;
+            }
+        }
+    }
+    
+    return 0;
+}
