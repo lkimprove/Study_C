@@ -43,25 +43,26 @@ int main(){
 
 
 //修改版2.0
+//存在问题：1 2 0 2 会输出0
 #include <iostream>
 #include <vector>
 using namespace std;
 
 int main(){
-    vector<int> num;
     int n;
+    vector<int> v;
     while(cin >> n){
-        num.push_back(n);
+        v.push_back(n);
     }
     
-    int count = 0, ret = 0;
-    for(int i = 0; i < num.size(); i++){
+    int count = 1, ret = v[0];
+    for(int i = 1; i < v.size(); i++){
         if(count == 0){
-            ret = num[i];
-            count++;
+            ret = v[i];
+            count = 1;
         }
         else{
-            if(ret == num[i]){
+            if(v[i] == ret){
                 count++;
             }
             else{
