@@ -54,7 +54,7 @@ int main(){
         num.push_back(n);
     }
     
-    int count = 1, ret = 0;
+    int count = 0, ret = 0;
     for(int i = 0; i < num.size(); i++){
         if(count == 0){
             ret = num[i];
