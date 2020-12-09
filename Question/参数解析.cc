@@ -58,3 +58,47 @@ int main(){
     
     return 0;
 }
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main(){
+    string str;
+    while(getline(cin, str)){
+        vector<string> vs;
+        
+        int i = 0;
+        string temp;
+        while(i < str.size()){
+            if(str[i] == '"'){
+                int j =  i + 1;
+                while(str[j] != '"'){
+                    temp += str[j];
+                    j++;
+                }
+                
+                i = j + 1;
+            }
+            else if(str[i] != ' '){
+                temp += str[i];
+                i++;
+            }
+            else if(str[i] == ' '){
+                vs.push_back(temp);
+                temp.clear();
+                i++;
+            }
+        }
+        
+        vs.push_back(temp);
+        cout << vs.size() << endl;
+        for(int i = 0; i < vs.size(); i++){
+            cout << vs[i] << endl;
+        }
+    }
+    
+    return 0;
+}
