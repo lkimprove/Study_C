@@ -94,3 +94,42 @@ int main(){
     
     return 0;
 }
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main(){
+    int n;
+    while(cin >> n){
+        if(n == 1 || n == 2){
+            cout << "-1" << endl;
+            continue;
+        }
+        
+        vector<int> array(2 * n - 1, 0);
+        array[0] = array[1] = array[2] = 1;
+        for(int i = 3; i <= n; i++){
+            for(int j = 2 * i - 2; j >= 0; j--){
+                if(j - 1 >= 0){
+                    array[j] += array[j - 1];
+                }
+                if(j - 2 >= 0){
+                    array[j] += array[j - 2];
+                }
+            }
+        }
+        
+        int ret = -1;
+        for(int i = 0; i < 2 * n - 1; i++){
+            if(array[i] % 2 == 0){
+                ret = i + 1;
+                break;
+            }
+        }
+        
+        cout << ret << endl;
+    }
+    
+    return 0;
+}
