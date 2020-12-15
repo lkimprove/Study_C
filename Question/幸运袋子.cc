@@ -1,53 +1,54 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <vector>
 using namespace std;
 
-int LuckyBag(vector<int>& array, int n, int sum, int multi, int index){
+int LuckyBag(vector<int>& bag, int n, int index = 0, int sum = 0, int multi = 1){
     int count = 0;
-    for(int i = index; i < n; i++){
-        sum += array[i];
-        multi *= array[i];
+    
+    while(index < n){
+        //当前sum和multi
+        sum += bag[index];
+        multi *= bag[index];
         
-        
+        //满足条件，往下走
         if(sum > multi){
-            //当前满足条件，再增加一个数判断是否继续满足条件
-            count += (1 + LuckyBag(array, n, sum, multi, i + 1));
+            count += 1 + LuckyBag(bag, n, index + 1, sum, multi);
         }
-        else if(array[i] == 1){
-            //不满足条件，但当前数为1，再增加一个数有可能满足条件
-            count += LuckyBag(array, n, sum,  multi, i + 1);
+        //不满足条件，但当前为1，往下走可能会满足条件
+        else if(bag[index] == 1){
+            count += LuckyBag(bag, n, index + 1, sum, multi);
         }
         else{
-            //不满足条件，且当前数不为1，在增加数也无法满足条件
             break;
         }
         
-        //不计算当前数，寻找更多的可能性
-        sum -= array[i];
-        multi /= array[i];
+        //恢复sum和multi
+        sum -= bag[index];
+        multi /= bag[index];
         
-        //相同的数只能计算一次
-        while(i + 1 < n && array[i] == array[i + 1]){
-            i++;
+        //避免重复数字
+        while(index + 1 < n && bag[index] == bag[index + 1]){
+            index++;
         }
+        
+        index++;
     }
     
     return count;
 }
 
-
 int main(){
     int n;
     while(cin >> n){
-        vector<int> array(n, 0);
-        for(int i = 0; i < n; i++){
-            cin >> array[i];
+        vector<int> bag(n, 0);
+        for(int i = 0; i< n; i++){
+            cin >> bag[i];
         }
         
-        sort(array.begin(), array.end());
+        sort(bag.begin(), bag.end());
         
-        cout << LuckyBag(array, n, 0, 1, 0) << endl;
+        cout << LuckyBag(bag, n) << endl;
     }
     
     return 0;
