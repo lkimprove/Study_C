@@ -1,3 +1,110 @@
+//恶心0.0
+#include <iostream>
+#include <string>
+#include <map>
+using namespace std;
+
+int main(){
+	string str;
+	//3 4 5 6 7 8 9 10 J Q K A 2 
+	map<string, int> m;
+	m["3"] = 1;
+	m["4"] = 2;
+	m["5"] = 3;
+	m["6"] = 4;
+	m["7"] = 5;
+	m["8"] = 6;
+	m["9"] = 7;
+	m["10"] = 8;
+	m["J"] = 9;
+	m["Q"] = 10;
+	m["K"] = 11;
+	m["A"] = 12;
+	m["2"] = 13;
+	while (getline(cin, str)){
+
+		//通过空格判断牌的数量
+		int s1 = 1, s2 = 1, flag = 0, i = 0;
+		for (; i < str.size(); i++){
+			if (str[i] == 'j'){
+				int j = i;
+				while (str[j] != 'J' && j < str.size()){
+					j++;
+				}
+				if (str[j] == 'J'){
+					cout << "joker JOKER" << endl;
+					break;
+				}
+			}
+			else if (str[i] == '-'){
+				flag = i;
+			}
+			else if (str[i] == ' '){
+				if (flag){
+					s2++;
+				}
+				else{
+					s1++;
+				}
+			}
+		}
+
+		if (i != str.size()){
+			continue;
+		}
+
+		if (s1 != s2){
+			//判断是否有炸弹
+			if (s1 == 4){
+				for (int i = 0; i < flag; i++){
+					cout << str[i];
+				}
+				cout << endl;
+			}
+			else if (s2 == 4){
+				for (int i = flag + 1; i < str.size(); i++){
+					cout << str[i];
+				}
+				cout << endl;
+			}
+			else{
+				cout << "ERROR" << endl;
+			}
+		}
+		else{
+			int curr = 0;
+			string s1, s2;
+			while (curr < str.size() && str[curr] != ' ' && str[curr] != '-'){
+				s1 += str[curr];
+				curr++;
+			}
+			curr = flag + 1;
+			while (curr < str.size() && str[curr] != ' ' && str[curr] != '-'){
+				s2 += str[curr];
+				curr++;
+			}
+
+			if (m[s1] < m[s2]){
+				for (int i = flag + 1; i < str.size(); i++){
+					cout << str[i];
+				}
+				cout << endl;
+			}
+			else{
+				for (int i = 0; i < flag; i++){
+					cout << str[i];
+				}
+				cout << endl;
+			}
+		}
+
+	}
+
+	return 0;
+}
+
+
+
 #include <iostream>
 #include <string>
 #include <algorithm>
