@@ -1,4 +1,3 @@
-//恶心0.0
 #include <iostream>
 #include <string>
 #include <map>
