@@ -30,9 +30,11 @@ public:
 
 	//拷贝构造
 	Date(const Date& d){
-		_year = d._year;
-		_month = d._month;
-		_day = d._day;
+		if(this != &d){
+	        	_year = d._year;
+			_month = d._month;
+			_day = d._day;
+		}
 	}
 
 	//赋值运算符重载函数
