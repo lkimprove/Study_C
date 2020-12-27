@@ -1,2 +1,7 @@
 vector中的迭代失效主要由两种情况引起：
-  1.insert:
+  1.iterator insert (iterator position, const value_type& val); 在position前插入元素val
+    insert后，可能会出现扩容的情况，迭代器会失效；
+    insert后返回的迭代器指向插入元素的位置
+  2.iterator erase (iterator position); 删除position位置元素
+    erase后，该位置元素被下一个元素覆盖，这个位置的值已将改变了，含义已经改变了
+    erase返回的迭代器指向被删除元素的下一个位置
