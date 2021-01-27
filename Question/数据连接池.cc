@@ -33,31 +33,28 @@ int main(){
     return 0;
 }
 
-
 #include <iostream>
-#include <algorithm>
-#include <set>
 #include <string>
 using namespace std;
 
 int main(){
     int n;
     while(cin >> n){
-        set<string> pool;
         string id, play;
-        int ret = 0;
-        
+        int ret = 0, cur = 0;
+		
         for(int i = 0; i < n; i++){
             cin >> id >> play;
             if(play == "connect"){
-                pool.insert(id);
+                cur++;
             }
             else if(play == "disconnect"){
-                pool.erase(id);
+                cur--;
             }
             
-            int size = pool.size();
-            ret = max(ret, size);
+            if(ret < cur){
+                ret = cur;
+            }
         }
         
         cout << ret << endl;
